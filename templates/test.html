@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Hub</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        
+        .text-static {
+            color: #ffffff;
+        }
+        .text-dynamic {
+            color: #000000;
+            background-color: #ff9900;
+            padding: 5px 15px;
+            margin-left: 5px;
+            border-radius: 20px;
+            display: inline-block;
+            animation: scrollUp 2s ease-in-out;
+        }
+        .search-box {
+            margin-top: 20px;
+        }
+        .search-box input {
+            width: 400px;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+        .search-buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: black;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .search-buttons button:hover {
+            background-color: darkorange;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(100%); opacity: 0; }
+            10% { opacity: 1; }
+            40% { transform: translateY(0); opacity: 1; }
+            80% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+
+        /* Move only the "Job match with AI" button next to the input field */
+        .job-match-button {
+            margin-top: 10px;
+            display: inline-block;
+            margin-left: 10px; /* Adds space between input and button */
+        }
+
+        .job-match-button button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: black;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Career Titles for Animation
+        document.addEventListener("DOMContentLoaded", () => {
+            const jobTitles = ["Data Scientist", "Sales Executive", "Consultant", "Software Engineer"];
+            let currentIndex = 0;
+
+            const jobTitleElement = document.getElementById("job-title");
+            const staticTextElement = document.getElementById("static-text");
+
+            function rotateJobTitles() {
+                // Reset animation
+                jobTitleElement.classList.remove("text-dynamic");
+                void jobTitleElement.offsetWidth; // Trigger reflow
+                jobTitleElement.classList.add("text-dynamic");
+
+                // Show "Skill Hub" at the end
+                if (currentIndex === jobTitles.length) {
+                    staticTextElement.textContent = "Skill";
+                    jobTitleElement.textContent = "Hub";
+                    clearInterval(titleInterval); // Stop rotation
+                } else {
+                    jobTitleElement.textContent = jobTitles[currentIndex];
+                    currentIndex++;
+                }
+            }
+
+            const titleInterval = setInterval(rotateJobTitles, 2000);
+        });
+
+        // Restored search functions
+        function searchRhyme() {
+            const rhymeNumber = document.getElementById("rhymeInput").value;
+            if (rhymeNumber) {
+                // Redirect to the new page with the rhyme number as a query parameter
+                window.location.href = `/rhyme/${rhymeNumber}`;
+            }
+        }
+
+        function searchSkill() {
+            const skill = document.getElementById("rhymeInput").value.trim().toLowerCase();
+            if (skill) {
+                // Redirect to a specific page inside the "skill" folder
+                const page = `skill/${skill.replace(/\s+/g, "-")}.html`;
+                window.location.href = page;
+            } else {
+                alert("Please enter a skill to search.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="jobResults"></div>
+    <!-- Logo with Animation -->
+    <div class="container">
+        <div class="search-container">
+            <span class="text-static" id="static-text">I want to become</span>
+            <span class="text-dynamic" id="job-title">Product Manager</span>
+        </div>
+
+        <!-- Career Search Box -->
+        <div class="search-box">
+            <input type="text" id="rhymeInput" placeholder="Search Skillhub" autofocus>
+
+            <!-- Moved only the Job match button next to input field -->
+            <div class="job-match-button">
+                <button onclick="window.location.href='/job-match-ai'">Job match with AI</button>
+            </div>
+        </div>
+        <div class="search-buttons">
+            <button onclick="searchRhyme()">Get 60 days plan</button>
+            <button onclick="searchSkill()">Search This Skill</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matches</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Skill Hub Logo */
+        .skill-hub-logo {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .skill-hub-logo a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-hub-logo .hub {
+            background-color: orange;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .table-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .job-table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        .job-table th, .job-table td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .job-table th {
+            background-color: orange;
+            color: black;
+        }
+
+        .job-table td a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        .job-table td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: black;
+            background-color: orange;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skill Hub Logo -->
+    <div class="skill-hub-logo">
+        <a href="/">
+            <span>Skill</span>
+            <span class="hub">Hub</span>
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="container">
+        <h1>Top 5 Job Matches</h1>
+    </div>
+
+    <!-- Job Matches Table -->
+    <div class="table-container">
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Matched Skills</th>
+                    <th>Missing Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in results %}
+                <tr>
+                    <td><a href="{{ job['job_link'] }}" target="_blank">{{ job["job_link"] }}</a></td>
+                    <td>{{ job["matched_skills"] }}</td>
+                    <td>{{ job["missing_skills"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Back Button -->
+    <div class="container">
+        <a href="/" class="back-button">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Match AI</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Divide the screen into two halves */
+    .left-panel, .right-panel {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .left-panel {
+      position: relative;
+    }
+
+    .divider {
+      width: 1px;
+      height: 100%;
+      background-color: white;
+      position: absolute;
+      left: 50%;
+    }
+
+    /* Animation styles */
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: orange;
+      margin-right: 10px;
+      animation: blink 1s step-start infinite;
+    }
+
+    .rectangle {
+      font-size: 96px;
+      color: orange;
+      font-weight: bold;
+      opacity: 1;
+      position: relative;
+    }
+
+    .text {
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .skill-hub {
+      font-size: 60px;
+      display: inline;
+    }
+
+    .hub {
+      background-color: orange;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .community {
+      font-size: 50px;
+      margin-top: 10px;
+    }
+
+    .intro-text {
+      font-size: 24px;
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+      font-family: 'Verdana', sans-serif;
+    }
+
+    .intro-text .rec {
+      color: orange;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .circle-animation {
+      animation: moveToRec 2s forwards, fadeOut 1s 2s forwards;
+    }
+
+    @keyframes moveToRec {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(50px);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 2s forwards;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Right Panel Styles */
+    .right-panel label {
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .right-panel input {
+      width: 80%;
+      font-size: 20px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid orange;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+    }
+
+    .right-panel button {
+      font-size: 24px;
+      background-color: orange;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .right-panel button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div id="container">
+      <div class="circle" id="circle"></div>
+      <div class="rectangle" id="rectangle">rec</div>
+    </div>
+    <div class="text" id="text">
+      <div class="skill-hub">
+        Skill <span class="hub">Hub</span>
+      </div>
+      <div class="community">Community</div>
+    </div>
+    <div class="intro-text">
+      Introducing <span class="rec">rec</span>, you tell your skills, we tell you what you are best for.
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <form action="/job-match-ai" method="POST">
+      <label for="skills">Enter your skills:</label>
+      <input type="text" id="skills" name="skills" placeholder="e.g. Python, Data Analysis">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    let blinkCount = 0;
+    const circle = document.getElementById('circle');
+    const rectangle = document.getElementById('rectangle');
+    const text = document.getElementById('text');
+    
+    // Trigger animation after 4 blinks
+    circle.addEventListener('animationiteration', () => {
+      blinkCount++;
+      if (blinkCount === 4) {
+        circle.classList.add('circle-animation'); // Circle moves to "rec" and fades out
+        rectangle.style.animation = 'fadeOut 1s forwards'; // Fade out "rec"
+        setTimeout(() => {
+          text.classList.add('fade-in'); // Fade in "Skill Hub Community"
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

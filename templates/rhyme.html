@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Hub</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: black;
+            padding: 20px 20px; /* Push the logo 1 cm down */
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo .skill {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .logo .hub {
+            font-size: 24px;
+            font-weight: bold;
+            background-color: orange;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        main {
+            padding: 20px;
+            text-align: left; /* Ensures all content is left-aligned */
+        }
+        h1 {
+            font-size: 28px;
+            text-align: left; /* Left-aligned title */
+            margin-bottom: 20px;
+        }
+        .week {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .days {
+            margin: 10px auto;
+            text-align: left;
+            max-width: 600px;
+        }
+        .days ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        .days ul li {
+            margin-bottom: 10px;
+        }
+        a.logo {
+            text-decoration: none;
+        }
+        a.logo:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Logo acts as a "Go Back" button -->
+        <a href="/" class="logo">
+            <span class="skill">Skill</span>
+            <span class="hub">Hub</span>
+        </a>
+    </header>
+    <main>
+        <h1>Your 60-Day Skill Plan</h1>
+        <div class="content">
+            {% for week_content in rhyme.split('**Week ') if week_content.strip() %}
+                <div class="week">
+                    Week {{ week_content.split(':')[0] }}:
+                </div>
+                <div class="days">
+                    <ul>
+                        {% for day in week_content.split('Days ')[1:] %}
+                            {% set content = day.split(':', 1) %}
+                            <li><strong>Days {{ content[0].strip() }}</strong>: {{ content[1].strip() }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

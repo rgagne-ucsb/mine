@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Hub Community</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+    }
+
+    a {
+      color: #FB923C;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: #1F2937;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-skill {
+      font-size: 2rem;
+      color: white;
+      display: inline-block;
+    }
+
+    .logo-hub {
+      font-size: 2rem;
+      color: black;
+      background-color: #FB923C;
+      padding: 0 0.5rem;
+      border-radius: 5px;
+      margin-left: 0.2rem;
+    }
+
+    .logo-community {
+      font-size: 1rem;
+      color: white;
+      margin-top: 0.2rem;
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    .content-layout {
+      display: flex;
+      padding: 1rem;
+    }
+
+    aside {
+      width: 25%;
+      padding: 1rem;
+      border-right: 2px solid white;
+    }
+
+    aside ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    aside ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    aside ul li a {
+      color: #FB923C;
+    }
+
+    main {
+      width: 75%;
+      padding: 1rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #1F2937;
+      color: #FB923C;
+    }
+
+    td {
+      background-color: #2D3748;
+    }
+
+    .hidden-content {
+      display: none;
+    }
+
+    .reveal-btn {
+      background-color: #FB923C;
+      color: black;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .reveal-btn:hover {
+      background-color: #FFA447;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div>
+        <span class="logo-skill">Skill</span>
+        <span class="logo-hub">Hub</span>
+      </div>
+      <div class="logo-community">Community</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#tools">Tools & Techniques</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#communities">Communities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Content Layout -->
+  <div class="content-layout">
+    <!-- Sidebar -->
+    <aside>
+      <ul>
+        <li><a href="#skills">Essential Skills</a></li>
+        <li><a href="#tools">Tools & Techniques</a></li>
+        <li><a href="#books">Books to Read</a></li>
+        <li><a href="#communities">Communities to Join</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <section id="skills">
+        <h1>Essential Skills for Data Science</h1>
+        <button class="reveal-btn" onclick="toggleContent('skills-content')">Show Content</button>
+        <div id="skills-content" class="hidden-content">
+          <p>Data science demands a mix of technical expertise and soft skills. Below is a breakdown:</p>
+          <div style="display: flex; gap: 2rem;">
+            <table>
+              <tr><th>Hard Skills</th><th>Importance (1-5)</th></tr>
+              <tr><td>Programming</td><td>5</td></tr>
+              <tr><td>Statistics</td><td>5</td></tr>
+              <tr><td>Data Visualization</td><td>4</td></tr>
+              <tr><td>Machine Learning</td><td>5</td></tr>
+              <tr><td>Big Data Tools</td><td>4</td></tr>
+            </table>
+            <table>
+              <tr><th>Soft Skills</th><th>Importance (1-5)</th></tr>
+              <tr><td>Communication</td><td>5</td></tr>
+              <tr><td>Problem Solving</td><td>5</td></tr>
+              <tr><td>Teamwork</td><td>4</td></tr>
+              <tr><td>Adaptability</td><td>4</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools">
+        <h2>Tools & Techniques</h2>
+        <button class="reveal-btn" onclick="toggleContent('tools-content')">Show Content</button>
+        <div id="tools-content" class="hidden-content">
+          <p>Master these tools to thrive as a data scientist:</p>
+          <ul>
+            <li><a href="https://www.python.org/">Python</a></li>
+            <li><a href="https://www.r-project.org/">R</a></li>
+            <li><a href="https://www.mysql.com/">SQL</a></li>
+            <li><a href="https://www.tensorflow.org/">TensorFlow</a></li>
+            <li><a href="https://public.tableau.com/">Tableau</a></li>
+            <li><a href="https://powerbi.microsoft.com/">Power BI</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="books">
+        <h2>Books to Read</h2>
+        <button class="reveal-btn" onclick="toggleContent('books-content')">Show Content</button>
+        <div id="books-content" class="hidden-content">
+          <p>These books provide foundational and advanced insights:</p>
+          <ul>
+            <li><a href="https://www.oreilly.com/library/view/python-for-data/9781449323592/">Python for Data Analysis</a></li>
+            <li><a href="https://www.amazon.com/Data-Science-Handbook-Leaders-Practitioners/dp/0996047515">The Data Science Handbook</a></li>
+            <li><a href="https://www.amazon.com/Storytelling-Data-Picture-Business-Professionals/dp/1119002257">Storytelling with Data</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="communities">
+        <h2>Communities to Join</h2>
+        <button class="reveal-btn" onclick="toggleContent('communities-content')">Show Content</button>
+        <div id="communities-content" class="hidden-content">
+          <p>Stay connected and learn from others in these communities:</p>
+          <ul>
+            <li><a href="https://www.kaggle.com">Kaggle</a></li>
+            <li><a href="https://www.datasciencecentral.com">Data Science Central</a></li>
+            <li><a href="https://towardsdatascience.com">Towards Data Science</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleContent(id) {
+      const content = document.getElementById(id);
+      if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
