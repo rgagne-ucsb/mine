@@ -67,6 +67,16 @@ def job_match_ai():
         df['similarity'] = cosine_sim.flatten()
 
 # Function to calculate matched and missing skills
+    #     def calculate_skills_match(row, user_skills):
+    # # Ensure job_skills is a string, handle NaN values gracefully
+    #         job_skills_set = set(map(str.strip, str(row["job_skills"]).lower().split(",")))
+    #         matched_skills = user_skills.intersection(job_skills_set)
+    #         missing_skills = job_skills_set.difference(user_skills)
+    #         return pd.Series({
+    #             "matched_skills": ", ".join(matched_skills),
+    #             "missing_skills": ", ".join(missing_skills)
+    #         })
+
         def calculate_skills_match(row, user_skills):
     # Ensure job_skills is a string, handle NaN values gracefully
             job_skills_set = set(map(str.strip, str(row["job_skills"]).lower().split(",")))
@@ -76,6 +86,8 @@ def job_match_ai():
                 "matched_skills": ", ".join(matched_skills),
                 "missing_skills": ", ".join(missing_skills)
             })
+
+
 
 
         # Apply the function to the DataFrame to calculate matched and missing skills
